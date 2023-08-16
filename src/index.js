@@ -44,6 +44,19 @@ module.exports = function toReadable (number) {
             return newStr += obj[number]
         }  else if (number <= 99 && number % 10 !== 0){
             return newStr = obj[Math.trunc(number / 10) * 10] + ' ' + obj[number - (Math.trunc(number / 10) * 10)]
+        } else if (number <= 999 && number % 100 !==0 && number % 10 !== 0  && (number - (Math.trunc(number / 100) * 100)) > 20) {
+            let str1 = Math.trunc(number / 100) * 100
+            let str2 = Math.trunc((number - str1) / 10) * 10
+            let str3 = number - str1 - str2
+            return newStr = obj[str1] + ' ' + obj[str2] + ' ' + obj[str3]
+        } else if (number < 999 && number % 10 === 0) {
+            let str3 = Math.trunc(number / 100) * 100
+            let str4 = number - str3
+            return newStr = obj[str3] + ' ' + obj[str4]
+        } else if ((number - (Math.trunc(number / 100) * 100)) <= 19) {
+            let str5 = Math.trunc(number / 100) * 100
+            let str6 = number - str5
+            return newStr = obj[str5] + ' ' + obj[str6]
         }
          
      return newStr
