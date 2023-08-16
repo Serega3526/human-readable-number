@@ -42,8 +42,8 @@ module.exports = function toReadable (number) {
         };
         if (number <= 20 || number < 99 && number % 10 ===0 || number < 999 && number % 100 === 0) {
             return newStr += obj[number]
-        }  else if (number < 99 && number % 10 !== 0){
-            return newStr += `${Math.floor(obj[number])}`
+        }  else if (number <= 99 && number % 10 !== 0){
+            return newStr = obj[Math.trunc(number / 10) * 10] + ' ' + obj[number - (Math.trunc(number / 10) * 10)]
         }
          
      return newStr
